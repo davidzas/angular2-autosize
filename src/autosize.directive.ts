@@ -1,22 +1,34 @@
-import { ElementRef, HostListener, Directive} from '@angular/core';
+import { ElementRef, HostListener, Directive } from '@angular/core';
 
 @Directive({
-    selector: 'textarea[autosize]'
+  selector: 'input[autosize]'
 })
 
-export class Autosize {
- @HostListener('input',['$event.target'])
-  onInput(textArea: HTMLTextAreaElement): void {
+export class AutosizeDirective {
+  @HostListener('input', ['$event.target'])
+  onInput(textArea: HTMLInputElement): void {
     this.adjust();
   }
-  constructor(public element: ElementRef){
+  base: number;
+  constructor(public element: ElementRef) {
+
   }
-  ngAfterContentChecked(): void{
+  ngAfterContentChecked(): void {
     this.adjust();
   }
-  adjust(): void{
+  adjust(): void {
+    if (!this.base) {
+      this.base = parseInt(this.element.nativeElement.offsetWidth); 
+       
+       
+    }
     this.element.nativeElement.style.overflow = 'hidden';
-    this.element.nativeElement.style.height = 'auto';
-    this.element.nativeElement.style.height = this.element.nativeElement.scrollHeight + "px";
+    //this.element.nativeElement.style.height = 'auto';
+    if (this.element.nativeElement.scrollWidth > this.base) {
+      this.element.nativeElement.style.width = this.element.nativeElement.scrollWidth + "px";
+    } else {
+      this.element.nativeElement.style.width = this.base + 'px';
+    }
+    //console.log(this.element.nativeElement.scrollWidth);
   }
 }
