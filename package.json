@@ -1,10 +1,10 @@
 {
-  "name": "angular2-autosize",
-  "version": "1.0.1",
-  "description": "Directive that automatically adjusts textarea height to fit content",
+  "name": "dz-angular2-autosize",
+  "version": "1.0.0",
+  "description": "Directive that automatically adjusts input width to fit content",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stevepapa/angular2-autosize.git"
+    "url": "git+https://github.com/davidzas/angular2-autosize.git"
   },
   "scripts": {
   },
