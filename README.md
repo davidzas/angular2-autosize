@@ -13,7 +13,7 @@ import {AutosizeDirective} from 'angular2-autosize';
 
 @NgModule({
   declarations: [
-    Autosize
+    AutosizeDirective
   ]
 })
 ```
